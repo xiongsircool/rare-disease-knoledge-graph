@@ -601,6 +601,33 @@ class OptimizedPMCDownloader:
 
         print(f"[OK] 保存解析数据: {json_file} ({len(articles)} 篇)")
 
+    def collect_pmc_ids_only(self, disease: str) -> List[str]:
+        """仅收集PMC ID，不下载全文（类似PubMed的search_pubmed）"""
+        print(f"\n🔍 {disease}: 收集PMC ID...")
+
+        try:
+            pmc_ids = self.search_pmc_by_disease(disease)
+
+            if pmc_ids:
+                print(f"   📚 找到 {len(pmc_ids)} 个PMC ID")
+                # 去重处理
+                unique_pmcs = [pmc_id for pmc_id in pmc_ids if pmc_id not in self.processed_pmids]
+                if len(unique_pmcs) < len(pmc_ids):
+                    print(f"   ✨ 去重后: {len(unique_pmcs)} 个新PMC ID")
+
+                # 标记为已处理
+                for pmc_id in unique_pmcs:
+                    self.processed_pmids.add(pmc_id)
+
+                return unique_pmcs
+            else:
+                print(f"   ❌ PMC中未找到免费全文")
+                return []
+
+        except Exception as e:
+            print(f"   ❌ PMC ID收集失败: {e}")
+            return []
+
     def process_single_disease(self, disease: str) -> Dict:
         """处理单个疾病"""
         print(f"\n{'='*60}")

@@ -1,0 +1,76 @@
+{
+  "api_settings": {
+    "email": "1666526339@qq.com",
+    "api_key": "f7f3e5ffa36e0446a4a3c6540d8fa7e72808",
+    "default_sleep_time": 0.34,
+    "default_sleep_time_with_key": 0.12,
+    "max_retry": 3,
+    "request_timeout": 30
+  },
+  "optimized_script": {
+    "default_max_diseases": 50,
+    "pmc_batch_size": 500,
+    "pubmed_batch_size": 1000,
+    "save_progress_every": 20,
+    "enable_csv_export": true,
+    "enable_pmc_csv": false
+  },
+  "concurrent_script": {
+    "default_max_diseases": 100,
+    "default_max_workers": 6,
+    "max_workers_limit": 20,
+    "save_progress_every": 10,
+    "worker_sleep_time": 0.1,
+    "enable_csv_export": true
+  },
+  "output_settings": {
+    "base_output_dir": "knowledge_graph/data/literature",
+    "create_csv_by_disease": true,
+    "create_unified_csv": true,
+    "max_field_length": {
+      "title": 1000,
+      "abstract": 2000,
+      "authors": 500
+    }
+  },
+  "performance_tips": {
+    "beginner": {
+      "max_diseases": 50,
+      "max_workers": 3,
+      "batch_size": 100,
+      "description": "适合初次使用，稳定可靠"
+    },
+    "intermediate": {
+      "max_diseases": 500,
+      "max_workers": 6,
+      "batch_size": 500,
+      "description": "适合一般使用，平衡速度和稳定性"
+    },
+    "advanced": {
+      "max_diseases": 2000,
+      "max_workers": 12,
+      "batch_size": 1000,
+      "description": "适合高性能环境，追求最大速度"
+    }
+  },
+  "network_profiles": {
+    "unstable": {
+      "max_workers": 2,
+      "sleep_time": 0.5,
+      "batch_size": 50,
+      "description": "不稳定网络环境，降低并发"
+    },
+    "stable": {
+      "max_workers": 6,
+      "sleep_time": 0.3,
+      "batch_size": 500,
+      "description": "稳定网络环境，标准配置"
+    },
+    "high_speed": {
+      "max_workers": 12,
+      "sleep_time": 0.1,
+      "batch_size": 1000,
+      "description": "高速网络环境，高并发配置"
+    }
+  }
+}
