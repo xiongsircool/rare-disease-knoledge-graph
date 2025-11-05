@@ -226,6 +226,27 @@ download_report_*.json
 # Log files
 *.log
 logs/
+*.out
+nohup.out
+*.error
+*.debug
+*.trace
+*.activity
+*.access
+*.audit
+*.system
+*.console
+*.terminal
+*.session
+*.stderr
+*.stdout
+*.pid
+
+# Process and daemon files
+*.pid
+*.lock
+*.daemon
+*.service
 
 # Environment files
 .env.local
@@ -282,3 +303,13 @@ coverage.xml
 metrics/
 
 CLAUDE.md
+
+support_sf/
+
+data/pubmed
+pmc_fulltexts_xml
+
+data
+
+.spec-workflows/
+.claude
